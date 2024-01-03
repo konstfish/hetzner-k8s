@@ -1,0 +1,7 @@
+.secret*
+.env
+.terraform
+.terraform*
+azuresetup
+.DS_Store
+.github
