@@ -7,4 +7,6 @@ azuresetup
 .github
 cloud-init2.yml
 ansible/inventory.yml
+ansible/artifacts
 terraform.tfstate*
+ssh_key

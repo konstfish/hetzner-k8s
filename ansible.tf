@@ -3,12 +3,12 @@ locals {
     [for i in range(var.cluster_master_node_count) : {
       name      = hcloud_server.master_nodes[i].name
       ip        = hcloud_server.master_nodes[i].network.*.ip[0]
-      public_ip = hcloud_server.master_nodes[i].ipv6_address
+      public_ip = hcloud_server.master_nodes[i].ipv4_address
     }], 
     [for i in range(var.cluster_node_count) : {
       name      = hcloud_server.worker_nodes[i].name
       ip        = hcloud_server.worker_nodes[i].network.*.ip[0]
-      public_ip = hcloud_server.worker_nodes[i].ipv6_address
+      public_ip = hcloud_server.worker_nodes[i].ipv4_address
     }]
   )
 }
@@ -22,7 +22,7 @@ resource "local_file" "ansible_inventory" {
   provisioner "local-exec" {
     command     = <<EOT
       echo "$SSH_PRIVATE_KEY" > ssh_key && chmod 600 ssh_key
-      ansible-playbook -i inventory.yml playbook.yml
+      ansible-playbook -i inventory.yml playbook.yml -u root --private-key=./ssh_key --extra-vars "cluster_name=${var.cluster_name} kubeconfig_localhost=true kubeconfig_localhost_ansible_host=false"
       rm ssh_key
     EOT
     working_dir = "ansible"

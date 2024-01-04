@@ -5,6 +5,8 @@ resource "hcloud_server" "master_nodes" {
   server_type = var.cluster_master_node_type
   location    = var.hetzner_location
   ssh_keys    = concat(keys(hcloud_ssh_key.default), [hcloud_ssh_key.ansible.name])
+
+  firewall_ids = [hcloud_firewall.default.id]
   network {
     network_id = hcloud_network.default.id
     ip         = cidrhost(var.cluster_network_subnet_range, count.index + 10)
@@ -34,6 +36,8 @@ resource "hcloud_server" "worker_nodes" {
   server_type = var.cluster_node_type
   location    = var.hetzner_location
   ssh_keys    = concat(keys(hcloud_ssh_key.default), [hcloud_ssh_key.ansible.name])
+
+  firewall_ids = [hcloud_firewall.default.id]
   network {
     network_id = hcloud_network.default.id
     ip         = cidrhost(var.cluster_network_subnet_range, count.index + 50)

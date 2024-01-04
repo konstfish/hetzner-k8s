@@ -67,7 +67,7 @@ variable "cluster_node_public_net" {
   description = "The public network configuration for the worker nodes in the cluster."
   type        = map(string)
   default = {
-    "ipv4_enabled" = false
+    "ipv4_enabled" = true
     "ipv6_enabled" = true
   }
 }

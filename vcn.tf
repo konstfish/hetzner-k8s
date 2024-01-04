@@ -33,4 +33,14 @@ resource "hcloud_firewall" "default" {
     ]
   }
 
+  rule {
+    direction = "in"
+    protocol  = "tcp"
+    port      = "6443"
+    source_ips = [
+      "0.0.0.0/0",
+      "::/0"
+    ]
+  }
+
 }
