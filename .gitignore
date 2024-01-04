@@ -5,3 +5,6 @@
 azuresetup
 .DS_Store
 .github
+cloud-init2.yml
+ansible/inventory.yml
+terraform.tfstate*

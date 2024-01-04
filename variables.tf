@@ -76,13 +76,13 @@ variable "cluster_node_public_net" {
 variable "cluster_network_range" {
   description = "The CIDR for the cluster network."
   type        = string
-  default     = "10.0.0.0/16"
+  default     = "10.10.0.0/16"
 }
 
 variable "cluster_network_subnet_range" {
   description = "The CIDR for the cluster network."
   type        = string
-  default     = "10.0.20.0/24"
+  default     = "10.10.0.0/24"
 }
 
 // Hetzner General
