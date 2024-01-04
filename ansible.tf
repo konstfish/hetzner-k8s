@@ -4,7 +4,7 @@ locals {
       name      = hcloud_server.master_nodes[i].name
       ip        = hcloud_server.master_nodes[i].network.*.ip[0]
       public_ip = hcloud_server.master_nodes[i].ipv4_address
-    }], 
+    }],
     [for i in range(var.cluster_node_count) : {
       name      = hcloud_server.worker_nodes[i].name
       ip        = hcloud_server.worker_nodes[i].network.*.ip[0]
@@ -28,7 +28,7 @@ resource "local_file" "ansible_inventory" {
     working_dir = "ansible"
     environment = {
       ANSIBLE_HOST_KEY_CHECKING = "false"
-      SSH_PRIVATE_KEY = nonsensitive(tls_private_key.ansible.private_key_openssh)
+      SSH_PRIVATE_KEY           = nonsensitive(tls_private_key.ansible.private_key_openssh)
     }
   }
 }
