@@ -19,12 +19,6 @@ variable "cluster_name" {
   default     = "hetzner-k8s"
 }
 
-variable "cluster_version" {
-  description = "The version of the cluster."
-  type        = string
-  default     = "1.20"
-}
-
 /// Nodes
 variable "cluster_node_count" {
   description = "The number of worker nodes in the cluster."
