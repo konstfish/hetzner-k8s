@@ -24,7 +24,7 @@ resource "helm_release" "cloudflare_tunnel_ingress_controller" {
 
   timeout = 600
 
-  depends_on = [ 
+  depends_on = [
     local_file.ansible_inventory
-   ]
+  ]
 }

@@ -117,5 +117,5 @@ variable "cloudflare_acount_id" {
 variable "cloudflare_tunnel_name" {
   description = "The name for the Cloudflare Tunnel (will be created by helm chart)."
   type        = string
-  default = "hetzner-k8s"
+  default     = "hetzner-k8s"
 }

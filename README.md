@@ -1,5 +1,6 @@
 # hetzner-k8s
-Create a Kubernetes Cluster on Hetzner Cloud using 3 inputs (Hetzner API key, Cloudflare API key & Account ID)
+Create a Kubernetes Cluster on Hetzner Cloud using 3 Inputs (Hetzner API Key, Cloudflare API Key & Account ID)
+
 Needs about ~30 minutes to complete
 
 ## Variables
