@@ -1,3 +1,17 @@
+// nginx for extra routing features like rewrites https://github.com/STRRL/cloudflare-tunnel-ingress-controller/issues/28
+/*resource "helm_release" "nginx_ingress" {
+  name             = "ingress-nginx"
+  repository       = "https://kubernetes.github.io/ingress-nginx"
+  chart            = "ingress-nginx"
+  namespace        = "ingress-nginx"
+  create_namespace = true
+
+  timeout = 100
+
+  depends_on = [
+    local_file.ansible_inventory
+  ]
+}*/
 
 resource "helm_release" "cloudflare_tunnel_ingress_controller" {
   name             = "cloudflare-tunnel-ingress-controller"
@@ -22,7 +36,7 @@ resource "helm_release" "cloudflare_tunnel_ingress_controller" {
     value = var.cloudflare_tunnel_name
   }
 
-  timeout = 600
+  timeout = 100
 
   depends_on = [
     local_file.ansible_inventory

@@ -119,3 +119,22 @@ variable "cloudflare_tunnel_name" {
   type        = string
   default     = "hetzner-k8s"
 }
+
+// Optionals
+variable "install_mongodb_operator" {
+  description = "Install MongoDB Operator"
+  type        = bool
+  default     = false
+}
+
+variable "install_argocd" {
+  description = "Install ArgoCD"
+  type        = bool
+  default     = false
+}
+
+variable "install_tekton" {
+  description = "Install Tekton"
+  type        = bool
+  default     = false
+}

@@ -10,3 +10,4 @@ ansible/inventory.yml
 ansible/artifacts
 terraform.tfstate*
 ssh_key
+etc
