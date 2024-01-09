@@ -23,7 +23,7 @@ resource "local_file" "ansible_inventory" {
     command     = <<EOT
       sleep 10 # wait for nodes to be ready
       echo "$SSH_PRIVATE_KEY" > ssh_key && chmod 600 ssh_key
-      ansible-playbook -i inventory.yml playbook.yml -u root --private-key=./ssh_key --extra-vars "cluster_name=${var.cluster_name} kubeconfig_localhost=true kubeconfig_localhost_ansible_host=false"
+      ansible-playbook -i inventory.yml playbook.yml -u root --private-key=./ssh_key --extra-vars "kubeconfig_localhost=true kubeconfig_localhost_ansible_host=false"
       rm ssh_key
     EOT
     working_dir = "ansible"

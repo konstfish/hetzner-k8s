@@ -23,9 +23,9 @@ resource "helm_release" "mongodb_operator" {
 resource "helm_release" "argocd" {
   count = var.install_argocd ? 1 : 0
 
-  name             = "argo"
-  repository       = "https://argoproj.github.io/argo-helm"
-  chart            = "argo-cd"
+  name       = "argo"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
 
   timeout = 100
 
@@ -34,6 +34,33 @@ resource "helm_release" "argocd" {
     local_file.ansible_inventory
   ]
 }
+
+resource "helm_release" "prometheus_stack" {
+  count = var.install_prometheus_stack ? 1 : 0
+
+  name       = "prometheus-stack"
+  repository = "https://prometheus-community.github.io/helm-charts"
+  chart      = "kube-prometheus-stack"
+
+  namespace = "monitoring"
+  create_namespace = true
+}
+
+/*resource "helm_release" "openshift_console" {
+  count = var.install_openshift_console ? 1 : 0
+
+  name             = "openshift-console"
+  repository       = "https://av1o.gitlab.io/charts"
+  chart            = "openshift-console"
+  namespace        = "openshift-console"
+  create_namespace = true
+
+  timeout = 100
+
+  depends_on = [
+    local_file.ansible_inventory
+  ]
+}*/
 
 resource "helm_release" "tekton" {
   count = var.install_tekton ? 1 : 0

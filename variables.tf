@@ -121,6 +121,12 @@ variable "cloudflare_tunnel_name" {
 }
 
 // Optionals
+variable "install_prometheus_stack"{
+  description = "Install Prometheus Stack"
+  type        = bool
+  default     = true
+}
+
 variable "install_mongodb_operator" {
   description = "Install MongoDB Operator"
   type        = bool
@@ -133,6 +139,11 @@ variable "install_argocd" {
   default     = false
 }
 
+variable "install_openshift_console" {
+  description = "Install Tekton"
+  type        = bool
+  default     = false
+}
 variable "install_tekton" {
   description = "Install Tekton"
   type        = bool
